@@ -1,16 +1,13 @@
 <template>
 <div class="widget">
-    <hr>
+   
     <div class="widget__uv" v-if="data">
         <p style="display: inline-block; vertical-align: middle; margin-right: 1em;">Visibility</p>
         <div class="widget__box big">{{ summary }}</div>
-
         <div v-for="(box, i) in boxes" :key="i" :class="distance == box ? 'active' : null" class="widget__box">
             {{box}}
         </div>
-
         <div class="widget__box">km</div>
-
     </div>
 </div>
 </template>
@@ -83,7 +80,7 @@ export default {
     position: absolute;
     padding: 2em 0;
     box-sizing: border-box;
-    top: 1218px;
+    top: 1200px;
 
     &__box.big {
         font-size: 48px;

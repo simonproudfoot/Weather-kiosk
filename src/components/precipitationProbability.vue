@@ -39,14 +39,15 @@ export default {
     left: 50px;
     top: 750px;
     position: absolute;
-    padding: 2em 0;
+    padding: 1em 0;
 
     h2 {
         position: absolute;
         font-weight: 900;
         top: 0;
         left: 50%;
-        transform: translate(-47%, 153px);
+        transform: translate(-47%, 139px);
+
         span {
             font-size: 0.5em;
         }

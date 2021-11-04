@@ -1,6 +1,6 @@
 <template>
 <div class="widget">
-    <p>Humidity {{ data.H }}%</p>
+    <p>Humidity</p>
     <hr />
     <div class="widget__humidity">
         <h2 :style="data.H == 100 ? 'font-size: 40px' : 'font-size: 57px' " v-if="data">{{data.H}}<span>%</span></h2>
@@ -101,11 +101,11 @@ export default {
 }
 
 .widget {
-    width: 217px;
+    width: 253px;
     display: inline-block;
     left: 624px;
     position: absolute;
-    padding: 2em 0;
+   padding: 1em 0;
     box-sizing: border-box;
     top: 750px;
 

@@ -88,10 +88,10 @@ export default {
 .widget {
     width: 253px;
     display: inline-block;
-    left: 326px;
+    left: 335px;
     top: 750px;
     position: absolute;
-    padding: 2em 0;
+    padding: 1em 0;
 
     &__temp {
         margin: 1em 0;

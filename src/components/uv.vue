@@ -85,7 +85,7 @@ export default {
     position: absolute;
     padding: 2em 0;
     box-sizing: border-box;
-    top: 1118px;
+    top: 1100px;
 
     &__box.big {
         font-size: 48px;
