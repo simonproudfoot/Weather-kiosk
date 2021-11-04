@@ -1,8 +1,8 @@
 <template>
 <div class="widget">
-    <div class="widget__uv">
-        <p>UV index</p>
-        <div class="widget__box big">{{ summary }}</div>
+    <div class="widget__uv" v-if="data">
+        <p style="display: inline-block; vertical-align: middle; margin-right: 1em;">UV index</p>
+        <div class="widget__box big" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
         <div v-for="(box, i) in boxes" :key="i" :class="activeUv(box.values) ? 'active' : null" class="widget__box" :style="'color:' + box.color">
             {{ box.values[0] }} <span v-if="i != boxes.length - 1">-</span><span v-else>+</span>
             {{ i != boxes.length - 1 ? box.values[box.values.length - 1] : null }}
@@ -10,13 +10,13 @@
     </div>
 </div>
 </template>
-
 <script>
 export default {
     props: ["data"],
     name: "uv",
     data: function () {
         return {
+            uvData: 1,
             boxes: [{
                     values: [1, 2],
                     color: "#76bc21",
@@ -42,29 +42,29 @@ export default {
     },
     methods: {
         activeUv(val) {
-            return val.includes(this.data.U) ? true : false;
+            return val.includes(this.uvData) ? true : false;
         },
     },
     mounted() {
-        this.data.U = 4;
+        this.uvData =  parseInt(this.data.U);
     },
     computed: {
         summary() {
             var result = "";
-            if (this.data.U) {
-                if (this.boxes[0].values.includes(this.data.U)) {
-                    result = "low";
+            if (this.uvData) {
+                if (this.boxes[0].values.includes(this.uvData)) {
+                    result = "Low";
                 }
-                if (this.boxes[1].values.includes(this.data.U)) {
-                    result = "medium";
+                if (this.boxes[1].values.includes(this.uvData)) {
+                    result = "Medium";
                 }
-                if (this.boxes[2].values.includes(this.data.U)) {
+                if (this.boxes[2].values.includes(this.uvData)) {
                     result = "High";
                 }
-                if (this.boxes[3].values.includes(this.data.U)) {
+                if (this.boxes[3].values.includes(this.uvData)) {
                     result = "Very high";
                 }
-                if (this.boxes[4].values.includes(this.data.U)) {
+                if (this.uvData >= 11) {
                     result = "Exremeley high";
                 }
                 return result;
@@ -79,14 +79,13 @@ export default {
 
 <style lang="scss" scoped>
 .widget {
-    width: calc(100% - 80px);
+    width: 100%;
     display: inline-block;
-    left: 40px;
+    left: 0;
     position: absolute;
     padding: 2em 0;
     box-sizing: border-box;
     top: 1118px;
-    border: 1px red dashed;
 
     &__box.big {
         font-size: 48px;
@@ -102,7 +101,7 @@ export default {
     }
 
     &__box {
-        padding-left: 5px;
+
         border-radius: 50px;
         vertical-align: middle;
         display: inline-block;
@@ -110,7 +109,7 @@ export default {
         min-width: 81px;
         background-color: #3f4a55;
         font-size: 22px;
-        margin-right: 20px;
+        margin-right: 10px;
     }
 }
 

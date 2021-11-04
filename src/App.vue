@@ -13,13 +13,13 @@
             <windSpeed v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <humidity v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <uv v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-            <!--   <visability v-if="dateInfo!==undefined" :data="dateInfo[0]" /> -->
+            
+            <visability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
 
         </div>
         <div v-else class="board__inner" style="text-align: left">
             <h1>Loading</h1>
         </div>
-
     </div>
     <span class="stand"> <span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span>
 </div>
@@ -32,7 +32,7 @@ import significantWeather from './components/significantWeather.vue'
 import PrecipitationProbability from './components/precipitationProbability.vue';
 import windSpeed from './components/windSpeed.vue';
 import humidity from './components/humidity.vue';
-// import visability from './components/visability.vue';
+import visability from './components/visability.vue';
 import uv from './components/uv.vue';
 export default {
     components: {
@@ -42,7 +42,7 @@ export default {
         PrecipitationProbability,
         windSpeed,
         humidity,
-        // visability,
+        visability,
         uv
     },
     name: "App",
