@@ -1,16 +1,18 @@
 <template>
 <div class="widget">
-   
+    <hr>
     <div class="widget__uv" v-if="data">
-        <p style="display: inline-block; vertical-align: middle; margin-right: 1em;">Visibility</p>
+        <p style="display: inline-block; vertical-align: middle; margin-right: 30px;">Visibility</p>
         <div class="widget__box big">{{ summary }}</div>
         <div v-for="(box, i) in boxes" :key="i" :class="distance == box ? 'active' : null" class="widget__box">
             {{box}}
         </div>
         <div class="widget__box">km</div>
     </div>
+
 </div>
 </template>
+
 <script>
 export default {
     props: ["data"],
@@ -78,9 +80,16 @@ export default {
     display: inline-block;
     left: 0;
     position: absolute;
-    padding: 2em 0;
+    padding: 1em 0;
     box-sizing: border-box;
     top: 1200px;
+
+    hr {
+        margin-top: 1em;
+        left: 40px;
+        width: calc(941px - 89px);
+        margin-bottom: 1em;
+    }
 
     &__box.big {
         font-size: 48px;
