@@ -1,7 +1,7 @@
 <template>
 <div id="app">
     <div class="board">
-        <div class="board__inner">
+        <div v-if="weatherDataReady && observationsReady" class="board__inner">
             <div class="date">
                 <h1>{{day}}</h1>
                 <h2>{{month}}</h2>
@@ -12,9 +12,14 @@
             <precipitationProbability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <windSpeed v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <humidity v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-         <!--   <visability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-            <uv v-if="dateInfo!==undefined" :data="dateInfo[0]" /> -->
+            <uv v-if="dateInfo!==undefined" :data="dateInfo[0]" />
+            <!--   <visability v-if="dateInfo!==undefined" :data="dateInfo[0]" /> -->
+
         </div>
+        <div v-else class="board__inner" style="text-align: left">
+            <h1>Loading</h1>
+        </div>
+
     </div>
     <span class="stand"> <span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span>
 </div>
@@ -28,7 +33,7 @@ import PrecipitationProbability from './components/precipitationProbability.vue'
 import windSpeed from './components/windSpeed.vue';
 import humidity from './components/humidity.vue';
 // import visability from './components/visability.vue';
-// import uv from './components/uv.vue';
+import uv from './components/uv.vue';
 export default {
     components: {
         significantWeather,
@@ -36,15 +41,16 @@ export default {
         temperatureThermometer,
         PrecipitationProbability,
         windSpeed,
-         humidity,
+        humidity,
         // visability,
-        // uv
+        uv
     },
     name: "App",
     data: function () {
         return {
+            observationsReady: false,
+            weatherDataReady: false,
             key: "1acb56e9-c15e-4547-a783-d93aa5a9ef81",
-
             observations: {
                 info: [],
             },
@@ -80,6 +86,8 @@ export default {
                     "weatherParams",
                     response.data["SiteRep"]["Wx"]["Param"]
                 );
+            }).then(() => {
+                this.weatherDataReady = true
             });
         },
         getObservations() {
@@ -88,6 +96,8 @@ export default {
                 this.key;
             this.axios.get(api).then((response) => {
                 this.$set(this.observations, "info", response.data);
+            }).then(() => {
+                this.observationsReady = true
             });
         },
     },
@@ -287,6 +297,7 @@ export default {
 <style lang="scss">
 $darkgrey: '#303e49';
 $lightgrey: '#3f4a55';
+
 body {
     margin: 0;
     padding: 0;
@@ -311,6 +322,13 @@ p {
     font-size: 21px;
     margin: 0;
     line-height: 40px;
+}
+
+hr {
+    background-color: #eee;
+    border: 0 none;
+    color: #eee;
+    height: 2px;
 }
 
 h1 {

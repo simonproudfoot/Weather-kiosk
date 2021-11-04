@@ -6,7 +6,7 @@
         <h1 v-if="data" style="font-weight: 900; display: inline-block; margin-right: 20px">{{data.S}}</h1>
         <h2 class="light-text" style="font-weight: 100; display: inline-block"> mph</h2>
         <hr style="opacity: 10%">
-        <div>
+        <div style="margin-top: 20px;">
             <h1 style="font-size: 40px; display: inline-block; vertical-align: middle;">{{data.D}}</h1>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.45 90.45" style="width: 100px; margin-left: 40px; vertical-align: middle;">
                 <g id="Layer_2" data-name="Layer 2">
@@ -41,24 +41,20 @@ export default {
         rotation() {
             var x = 0
             if (this.data.D) {
-                console.log('looking for' + this.data.D)
+
                 this.direction.forEach((direction) => {
-                    console.log(direction.name)
-                    console.log(direction.angle)
 
                     if (direction.name == this.data.D) {
                         x = direction.angle
-                        console.log('true')
+
                     }
                 });
 
                 // Object.values(this.direction).filter(x => x.name == this.data.D).angle
 
-                console.log(x)
-
                 return { transform: 'rotate(' + x + 'deg)' }
             } else {
-                console.log('cant find' + this.data.D)
+
                 return 0
             }
         },
@@ -90,7 +86,7 @@ export default {
 }
 
 .widget {
-    width:253px;
+    width: 253px;
     display: inline-block;
     left: 326px;
     top: 750px;
@@ -100,7 +96,7 @@ export default {
     &__temp {
         margin: 1em 0;
         height: 400px;
-       
+
         border-radius: 30px;
         padding-top: 23px;
         box-sizing: border-box;
