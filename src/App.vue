@@ -8,11 +8,11 @@
             </div>
             <significantWeather v-if="significantWeather" :data="significantWeather[0]" />
             <temperature v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-            <temperatureThermometer  v-if="dateInfo!==undefined" :data="dateInfo[0]"/>
+            <temperatureThermometer v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <precipitationProbability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <windSpeed v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-            <!-- <humidity v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-            <visability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
+            <humidity v-if="dateInfo!==undefined" :data="dateInfo[0]" />
+         <!--   <visability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <uv v-if="dateInfo!==undefined" :data="dateInfo[0]" /> -->
         </div>
     </div>
@@ -26,7 +26,7 @@ import temperatureThermometer from './components/temperatureThermometer.vue';
 import significantWeather from './components/significantWeather.vue'
 import PrecipitationProbability from './components/precipitationProbability.vue';
 import windSpeed from './components/windSpeed.vue';
-// import humidity from './components/humidity.vue';
+import humidity from './components/humidity.vue';
 // import visability from './components/visability.vue';
 // import uv from './components/uv.vue';
 export default {
@@ -36,7 +36,7 @@ export default {
         temperatureThermometer,
         PrecipitationProbability,
         windSpeed,
-        // humidity,
+         humidity,
         // visability,
         // uv
     },
@@ -276,8 +276,10 @@ export default {
     created() {
         this.getWeatherData(); // load the function when the app loads
         this.getObservations(); // load the function when the app loads
-        var today = new Date();
-        this.dateSelected = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + 'Z'
+        var today = new Date().toISOString().split('T')[0] + 'Z';
+        // var str = new Intl.DateTimeFormat('en-UK', { year: 'numeric', month: '2-digit', day: '2-digit', }).format(today);
+        this.dateSelected = today
+
     },
 }
 </script>
@@ -285,7 +287,6 @@ export default {
 <style lang="scss">
 $darkgrey: '#303e49';
 $lightgrey: '#3f4a55';
-
 body {
     margin: 0;
     padding: 0;
@@ -302,13 +303,12 @@ body {
     height: 1920px;
     width: 1080px;
     background: #afc4d6;
-
     position: relative;
 
 }
 
 p {
-    font-size: 25px;
+    font-size: 21px;
     margin: 0;
     line-height: 40px;
 }
@@ -365,7 +365,7 @@ h4 {
         bottom: 100px;
         left: 50%;
         transform: translateX(-50%);
-        
+
         background-color: #6c6c6d;
     }
 
@@ -373,7 +373,7 @@ h4 {
         position: absolute;
         width: 100px;
         height: 25px;
-      top: -12px;
+        top: -12px;
         left: 50%;
         border-radius: 100%;
         transform: translateX(-50%);
@@ -386,7 +386,7 @@ h4 {
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
-    width: 96%;
+    width: 991px;
     bottom: 150px;
     display: block;
     height: 1400px;
@@ -400,7 +400,7 @@ h4 {
         box-shadow: inset 10px 10px 1px 5px #28333b;
         color: #fff;
         object-fit: contain;
-        padding: 25px;
+        padding: 20px;
         border-radius: 40px;
         padding: 50px;
         background-color: #303e49;

@@ -28,9 +28,9 @@ export default {
 
 
 .widget {
-    width: 200px;
+    width: 217px;
     display: inline-block;
-    left: 500px;
+    left: 486px;
     position: absolute;
     padding: 2em 0;
     box-sizing: border-box;

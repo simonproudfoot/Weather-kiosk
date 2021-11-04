@@ -4,26 +4,12 @@
     <hr>
     <div class="widget__precipitation">
         <h2 v-if="data">{{data.Pp}}<span>%</span></h2>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.12 38.9">
-            <g id="Layer_2" data-name="Layer 2" style="position: relative">
-                <g id="Layer_1-2" data-name="Layer 1">
-                    <path d="M17.5,38.9c-5.46,0-7.91-3.7-7.91-7.36v-8H4.47A4.47,4.47,0,0,1,0,19.06a19.06,19.06,0,0,1,38.12,0,4.47,4.47,0,0,1-4.47,4.47H25.37v8C25.37,35.74,22,38.9,17.5,38.9Z" fill="#4a5461" />
-                    <circle cx="31.16" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="28.47" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="25.78" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="23.09" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="20.4" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="17.71" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="15.02" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="12.33" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="9.64" cy="19.26" r="0.62" fill="#fff" />
-                    <circle cx="6.95" cy="19.26" r="0.62" fill="#fff" />
-                    <line id="percentage" x1="5.47" y1="19.26" :x2="percentage" y2="19.26" fill="none" stroke="#dda22a" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.3" />
-                    <path d="M5.18,19.26a13.88,13.88,0,1,1,27.76,0" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.3" />
-                    <path d="M20.06,22.38v9.39a2.75,2.75,0,0,1-2.75,2.75h0a2.76,2.76,0,0,1-2.76-2.75V29.94" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.3" />
-                </g>
-            </g>
-        </svg>
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215.63 221.85">
+            <path d="M948.21,650.88a49.06,49.06,0,0,1-49-49V591.26a33.35,33.35,0,0,1,1.89-11.09,10,10,0,0,0-9.43-13.32h-9.84a30,30,0,0,1-30-30,107.82,107.82,0,1,1,215.63,0,30,30,0,0,1-30,30h-30.23a10,10,0,0,0-10,10v25A49.06,49.06,0,0,1,948.21,650.88Z" transform="translate(-851.82 -429.03)" fill="#fff" opacity="0.1" />
+            <line x1="177.65" y1="107.82" x2="30" y2="107.82" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" stroke-dasharray="0 15" />
+            <path d="M968.55,545.46v56.41a19,19,0,0,1-38,0V591.26a3.5,3.5,0,0,1,7,0v10.61a12,12,0,0,0,24,0V545.46" transform="translate(-851.82 -429.03)" fill="#fff" />
+            <path d="M883.15,536.85a77.82,77.82,0,1,1,155.63,0" transform="translate(-851.82 -429.03)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" stroke-dasharray="0 15" />
+            <path d="M966.93,459.43a77.83,77.83,0,0,1,71.6,77.57H882.9a77.81,77.81,0,0,1,77.82-77.81" transform="translate(-851.82 -429.03)" fill="none" stroke="#eba725" :stroke-dashoffset="strokeOffset"  stroke-dasharray="822" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" /></svg>
     </div>
 </div>
 </template>
@@ -33,6 +19,14 @@ export default {
     props: ["data"],
     name: "precipitationProbability",
     computed: {
+       
+            strokeOffset() {
+                var percentage = 820 - this.data.Pp * 3.8
+                return percentage
+                // min 815
+                // max 403
+            },
+        
         percentage() {
             var value = this.data ? this.data.Pp : 0
             return 32 * (value / 115) + 5
@@ -43,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .widget {
-    width: 33.33%;
+    width: 253px;
     display: inline-block;
     left: 50px;
     top: 750px;

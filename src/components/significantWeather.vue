@@ -12,15 +12,14 @@
 export default {
     props: ['data'],
     name: "significantWeather"
-
 }
 </script>
 
 <style lang="scss" scoped>
 .widget {
-    width: 400px;
+    width: 392px;
     display: inline-block;
-    left: 50px;
+    left: 35px;
     position: absolute;
     padding: 2em 0;
     &__significant {

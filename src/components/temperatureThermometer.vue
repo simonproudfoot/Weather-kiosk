@@ -1,13 +1,11 @@
 <template>
 <div class="widget">
-
     <div class="widget__temp">
-        <!-- {{data.T}} -->
         <div class="widget__temp__lines">
             <span v-for="index in 9" :key="index">-</span>
         </div>
         <span v-if="data" class="widget__temp__therm"><span class="widget__temp__therm__bottom"></span>
-            <div class="widget__temp__therm__result" :style="{ height: 'calc(' + percentage + '% - 80px)' }"></div>
+            <div class="widget__temp__therm__result" :style="'height:'+percentage+'px'"></div>
         </span>
     </div>
 </div>
@@ -19,10 +17,7 @@ export default {
     name: "temperature",
     computed: {
         percentage() {
-            // height: calc(32.5- 80px)
-
-            //
-            return (this.data.T * 100) / 40
+            return (this.data.T * 100) / 10
 
         }
     }
@@ -47,6 +42,7 @@ export default {
     position: absolute;
     padding: 2em 0;
     box-sizing: border-box;
+    left: 727px;
 
     &__temp {
         margin: 1em 0;
