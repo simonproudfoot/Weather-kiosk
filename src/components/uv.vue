@@ -1,6 +1,7 @@
 <template>
 <div class="widget">
     <div class="widget__uv" v-if="data">
+
         <p style="display: inline-block; vertical-align: middle; margin-right: 1em;">UV index</p>
         <div class="widget__box big" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
         <div v-for="(box, i) in boxes" :key="i" :class="activeUv(box.values) ? 'active' : null" class="widget__box" :style="'color:' + box.color">
@@ -10,6 +11,7 @@
     </div>
 </div>
 </template>
+
 <script>
 export default {
     props: ["data"],
@@ -46,31 +48,32 @@ export default {
         },
     },
     mounted() {
-        this.uvData =  parseInt(this.data.U);
+        this.uvData = parseInt(this.data.U);
     },
     computed: {
         summary() {
             var result = "";
-            if (this.uvData) {
-                if (this.boxes[0].values.includes(this.uvData)) {
-                    result = "Low";
-                }
-                if (this.boxes[1].values.includes(this.uvData)) {
-                    result = "Medium";
-                }
-                if (this.boxes[2].values.includes(this.uvData)) {
-                    result = "High";
-                }
-                if (this.boxes[3].values.includes(this.uvData)) {
-                    result = "Very high";
-                }
-                if (this.uvData >= 11) {
-                    result = "Exremeley high";
-                }
-                return result;
-            } else {
-                return '??'
+            //  if (this.uvData) {
+
+            if (this.uvData == 0) {
+                result = "Low";
             }
+            if (this.boxes[0].values.includes(this.uvData)) {
+                result = "Low";
+            }
+            if (this.boxes[1].values.includes(this.uvData)) {
+                result = "Medium";
+            }
+            if (this.boxes[2].values.includes(this.uvData)) {
+                result = "High";
+            }
+            if (this.boxes[3].values.includes(this.uvData)) {
+                result = "Very high";
+            }
+            if (this.uvData >= 11) {
+                result = "Exremeley high";
+            }
+            return result;
 
         },
     },

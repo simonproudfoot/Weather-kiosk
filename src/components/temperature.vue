@@ -10,7 +10,6 @@
 </div>
 
 </template>
-
 <script>
 export default {
     props: ['data'],
@@ -24,9 +23,6 @@ export default {
     font-size: 20px;
     vertical-align: text-top;
 }
-
-
-
 .widget {
     width: 217px;
     display: inline-block;
@@ -37,10 +33,10 @@ export default {
 
     &__temp {
         margin: 1em 0;
-        height: 400px;
+      height: 383px;
         background-color: #3f4a55;
         border-radius: 30px;
-        padding: 3em 0;
+        padding: 30px 0;
         box-sizing: border-box;
 
     }

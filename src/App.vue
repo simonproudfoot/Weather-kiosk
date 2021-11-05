@@ -1,21 +1,20 @@
 <template>
-<div id="app">
+<div id="app" :style="'background-color:#'+significantWeather[0].color">
+    <span class="gradient"></span>
     <div class="board">
         <div v-if="weatherDataReady && observationsReady" class="board__inner">
             <div class="date">
                 <h1>{{day}}</h1>
                 <h2>{{month}}</h2>
             </div>
-            <significantWeather v-if="significantWeather" :data="significantWeather[0]" />
+            <significantWeather v-if="significantWeather" :data="significantWeather" />
             <temperature v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <temperatureThermometer v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <precipitationProbability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <windSpeed v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <humidity v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <uv v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-            
             <visability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
-
         </div>
         <div v-else class="board__inner" style="text-align: left">
             <h1>Loading</h1>
@@ -48,6 +47,7 @@ export default {
     name: "App",
     data: function () {
         return {
+            timer: '',
             observationsReady: false,
             weatherDataReady: false,
             key: "1acb56e9-c15e-4547-a783-d93aa5a9ef81",
@@ -74,6 +74,13 @@ export default {
         };
     },
     methods: {
+        getAllData() {
+            this.weatherDataReady = false
+            this.getWeatherData(); // load the function when the app loads
+            this.getObservations(); // load the function when the app loads
+            var today = new Date().toISOString().split('T')[0] + 'Z';
+            this.dateSelected = today
+        },
         // function to connect to API
         getWeatherData() {
             let api =
@@ -127,17 +134,7 @@ export default {
             const count = obj.filter(Boolean).length;
             return count
         },
-        overlayColor() {
-            if (this.condition.snow && this.condition.fog) {
-                return 'colourCold'
-            } else if (!this.condition.snow && this.condition.rain && !this.condition.fog) {
-                return 'colourGrey'
-            } else if (this.condition.sunny) {
-                return 'colourSunny'
-            } else {
-                return ''
-            }
-        },
+
         dateInfo() {
             if (this.weatherData.info.Location != undefined) {
                 var arr = Object.values(this.weatherData.info.Location.Period).find(
@@ -153,97 +150,97 @@ export default {
             var arr = [];
             this.dateInfo.forEach((x) => {
                 if (x.W === "0") {
-                    arr.push("Clear night");
+                    arr.push({ title: "Clear night", image: '', color: '1b637f' });
                 }
                 if (x.W === "1") {
-                    arr.push("Sunny day");
+                    arr.push({ title: "Sunny day", image: 'sunny', color: '3cabe2' });
                 }
                 if (x.W === "2") {
-                    arr.push("Partly cloudy");
+                    arr.push({ title: "Partly cloudy", image: 'partly_cloudy', color: '86b4cc' });
                 }
                 if (x.W === "3") {
-                    arr.push("Partly cloudy(day)");
+                    arr.push({ title: "Partly cloudy(day)", image: 'partly_cloudy', color: '86b4cc' });
                 }
                 if (x.W === "4") {
-                    arr.push("N/A");
+                    arr.push({ title: "N/A", image: '', color: '' });
                 }
                 if (x.W === "5") {
-                    arr.push("Mist");
+                    arr.push({ title: "Mist", image: 'mist', color: '667f8f' });
                 }
                 if (x.W === "6") {
-                    arr.push("Fog");
+                    arr.push({ title: "Fog", image: 'fog', color: '667f8f' });
                 }
                 if (x.W === "7") {
-                    arr.push("Cloudy");
+                    arr.push({ title: "Cloudy", image: 'cloudy', color: '86b4cc' });
                 }
                 if (x.W === "8") {
-                    arr.push("Overcast");
+                    arr.push({ title: "Overcast", image: 'overcast', color: '86b4cc' });
                 }
                 if (x.W === "9") {
-                    arr.push("Light rain shower(night)");
+                    arr.push({ title: "Light rain shower(night)", image: 'light_rain', color: '86b4cc' });
                 }
                 if (x.W === "10") {
-                    arr.push("Light rain shower(day)");
+                    arr.push({ title: "Light rain shower(day)", image: 'light_rain', color: '86b4cc' });
                 }
                 if (x.W === "11") {
-                    arr.push("Drizzle");
+                    arr.push({ title: "Drizzle", image: 'drizzle', color: '83b3cb' });
                 }
                 if (x.W === "12") {
-                    arr.push("Light rain");
+                    arr.push({ title: "Light rain", image: 'light_rain', color: '83b3cb' });
                 }
                 if (x.W === "13") {
-                    arr.push("Heavy rain shower(night)");
+                    arr.push({ title: "Heavy rain shower(night)", image: 'heavy_rain', color: '667f8f' });
                 }
                 if (x.W === "14") {
-                    arr.push("Heavy rain shower(day)");
+                    arr.push({ title: "Heavy rain shower(day)", image: '', color: '667f8f' });
                 }
                 if (x.W === "15") {
-                    arr.push("Heavy rain");
+                    arr.push({ title: "Heavy rain", image: 'heavy_rain', color: '667f8f' });
                 }
                 if (x.W === "16") {
-                    arr.push("Sleet shower(night)");
+                    arr.push({ title: "Sleet shower(night)", image: 'sleet', color: '667f8f' });
                 }
                 if (x.W === "17") {
-                    arr.push("Sleet shower(day)");
+                    arr.push({ title: "Sleet shower(day)", image: 'sleet', color: '667f8f' });
                 }
                 if (x.W === "18") {
-                    arr.push("Sleet");
+                    arr.push({ title: "Sleet", image: 'sleet', color: '667f8f' });
                 }
                 if (x.W === "19") {
-                    arr.push("Hail shower(night)");
+                    arr.push({ title: "Hail shower(night)", image: 'hail', color: '667f8f' });
                 }
                 if (x.W === "20") {
-                    arr.push("Hail shower(day)");
+                    arr.push({ title: "Hail shower(day)", image: 'hail', color: '667f8f' });
                 }
                 if (x.W === "21") {
-                    arr.push("Hail");
+                    arr.push({ title: "Hail", image: 'hail', color: '667f8f' });
                 }
                 if (x.W === "22") {
-                    arr.push("Light snow shower(night)");
+                    arr.push({ title: "Light snow shower(night)", image: 'light_snow', color: '83b3cb' });
                 }
                 if (x.W === "23") {
-                    arr.push("Light snow shower(day)");
+                    arr.push({ title: "Light snow shower(day)", image: 'light_snow', color: '83b3cb' });
                 }
                 if (x.W === "24") {
-                    arr.push("Light snow");
+                    arr.push({ title: "Light snow", image: 'light_snow', color: '83b3cb' });
                 }
                 if (x.W === "25") {
-                    arr.push("Heavy snow shower(night)");
+                    arr.push({ title: "Heavy snow shower(night)", image: 'heavy_snow', color: '657e8e' });
                 }
                 if (x.W === "26") {
-                    arr.push("Heavy snow shower(day)");
+                    arr.push({ title: "Heavy snow shower(day)", image: 'heavy_snow', color: '657e8e' });
                 }
                 if (x.W === "27") {
-                    arr.push("Heavy snow shower");
+                    arr.push({ title: "Heavy snow shower", image: 'heavy_snow', color: '657e8e' });
                 }
                 if (x.W === "28") {
-                    arr.push("Heavy snow shower");
+                    arr.push({ title: "Heavy snow shower", image: 'heavy_snow', color: '657e8e' });
                 }
                 if (x.W === "29") {
-                    arr.push("Heavy snow shower");
+                    arr.push({ title: "Heavy snow shower", image: 'heavy_snow', color: '657e8e' });
                 }
                 if (x.W === "30") {
-                    arr.push("Heavy snow shower");
+                    arr.push({ title: "Heavy snow shower", image: 'heavy_snow', color: '657e8e' });
                 }
             });
             return arr;
@@ -284,12 +281,8 @@ export default {
         },
     },
     created() {
-        this.getWeatherData(); // load the function when the app loads
-        this.getObservations(); // load the function when the app loads
-        var today = new Date().toISOString().split('T')[0] + 'Z';
-        // var str = new Intl.DateTimeFormat('en-UK', { year: 'numeric', month: '2-digit', day: '2-digit', }).format(today);
-        this.dateSelected = today
-
+        this.getAllData();
+        setInterval(this.getAllData, 500000);
     },
 }
 </script>
@@ -313,9 +306,17 @@ body {
     text-align: center;
     height: 1920px;
     width: 1080px;
-    background: #afc4d6;
     position: relative;
 
+}
+
+.gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5704481621750263) 10%);
 }
 
 p {
