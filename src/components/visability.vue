@@ -4,10 +4,15 @@
     <div class="widget__uv" v-if="data">
         <p style="display: inline-block; vertical-align: middle; margin-right: 30px;">Visibility</p>
         <div class="widget__box big">{{ summary }}</div>
-        <div v-for="(box, i) in boxes" :key="i" :class="distance == box ? 'active' : null" class="widget__box">
-            {{box}}
+
+        <div class="graph">
+            <img :src="require('@/assets/vis.svg')">
+            <span class="graph__bar" :style="'width:'+percent+'%'"></span>
         </div>
-        <div class="widget__box">km</div>
+
+        <!-- <div v-for="(box, i) in boxes" :key="i" :class="distance == box ? 'active' : null" class="widget__box">
+            {{box}}
+        </div> -->
     </div>
 
 </div>
@@ -20,6 +25,7 @@ export default {
     data: function () {
         return {
             summary: '',
+            percent: 0,
             distance: 0,
             boxes: ['0-1', '1-4',
                 '4-10',
@@ -30,40 +36,48 @@ export default {
             ],
         };
     },
-    methods: {
-        activeUv(val) {
-            return val.includes(this.uvData) ? true : false;
-        },
+    computed: {
+        percent() {
+            var result = ''
+
+        }
     },
+
     mounted() {
         var result = this.data.V
         if (result == 'UN') {
             this.summary = 'Unknown'
-
+            this.percent = 0
         }
         if (result == 'VP') {
             this.summary = 'Very poor'
             this.distance = '0-1'
+            this.percent = 5
         }
         if (result == 'PO') {
             this.summary = 'Poor'
             this.distance = '1-4'
+            this.percent = 10
         }
         if (result == 'MO') {
             this.summary = 'Moderate'
             this.distance = '4-10'
+            this.percent = 24
         }
         if (result == 'GO') {
             this.summary = 'Good'
             this.distance = '10-20'
+            this.percent = 37
         }
         if (result == 'VG') {
             this.summary = 'Very good'
             this.distance = '20-40'
+            this.percent = 69
         }
         if (result == 'EX') {
             this.summary = 'Excellent'
             this.distance = '40+'
+            this.percent = 100
         }
         // Visibility in metres or as a code:
         // UN Unknown
@@ -75,6 +89,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.graph {
+width: 434px;
+display: inline-block;
+vertical-align: middle;
+position: relative;
+height: 57px;
+margin-left: 44px;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    &__bar {
+        position: absolute;
+        width: 10%;
+        height: 10px;
+        background-color: #eba725;
+        top: 20px;
+        left: 0;
+        border-radius: 10px;
+
+    }
+}
+
 .widget {
     width: 100%;
     display: inline-block;

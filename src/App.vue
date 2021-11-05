@@ -20,10 +20,9 @@
             <h1>Loading</h1>
         </div>
     </div>
-    <span class="stand"> <span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span>
+    <span class="stand"><span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span>
 </div>
 </template>
-
 <script>
 import temperature from './components/temperature.vue';
 import temperatureThermometer from './components/temperatureThermometer.vue';
