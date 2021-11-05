@@ -23,6 +23,7 @@
     <span class="stand"><span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span>
 </div>
 </template>
+
 <script>
 import temperature from './components/temperature.vue';
 import temperatureThermometer from './components/temperatureThermometer.vue';
@@ -245,40 +246,7 @@ export default {
             return arr;
         },
     },
-    watch: {
-        weatherWarning() {
-            !this.showWarning ? this.showWarning = true : null
-            setTimeout(() => {
-                this.showWarning ? this.showWarning = false : null
-            }, 5000);
-        },
-        condition: {
-            deep: true,
-            handler(val) {
-                if (val.sunny) {
-                    val.rain = false
-                    val.snow = false
-                    val.fog = false
-                    val.lighting = false
-                    val.clouds = false
-                    val.wind = false
-                } else {
-                    val.sunny = false
-                }
-            }
-        },
-        wind(val) {
-            if (val) {
-                this.$refs['clouds'].playbackRate = 3;
-                this.$refs['rain'].playbackRate = 3;
-                this.$refs['snow'].playbackRate = 3;
-            } else {
-                this.$refs['clouds'].playbackRate = 1;
-                this.$refs['rain'].playbackRate = 1;
-                this.$refs['snow'].playbackRate = 1;
-            }
-        },
-    },
+
     created() {
         this.getAllData();
         setInterval(this.getAllData, 500000);
@@ -364,6 +332,33 @@ h4 {
 
 .date {
     text-align: left;
+}
+
+.bottomBars {
+
+    height: 100px;
+    width: 833px;
+    display: flex !important;
+    left: 50px !important;
+    // justify-content: space-between;
+    align-items: center;
+
+    div {
+     //   border: 1px dashed pink;
+    }
+
+    .col-1 {
+        width: 107px;
+    }
+
+    .col-2 {
+        width: 266px
+    }
+
+    .col-3 {
+        width: 439px
+    }
+
 }
 
 .stand {

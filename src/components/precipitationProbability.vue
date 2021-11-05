@@ -9,7 +9,7 @@
             <line x1="177.65" y1="107.82" x2="30" y2="107.82" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" stroke-dasharray="0 15" />
             <path d="M968.55,545.46v56.41a19,19,0,0,1-38,0V591.26a3.5,3.5,0,0,1,7,0v10.61a12,12,0,0,0,24,0V545.46" transform="translate(-851.82 -429.03)" fill="#fff" />
             <path d="M883.15,536.85a77.82,77.82,0,1,1,155.63,0" transform="translate(-851.82 -429.03)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" stroke-dasharray="0 15" />
-            <path d="M966.93,459.43a77.83,77.83,0,0,1,71.6,77.57H882.9a77.81,77.81,0,0,1,77.82-77.81" transform="translate(-851.82 -429.03)" fill="none" stroke="#eba725" :stroke-dashoffset="strokeOffset" stroke-dasharray="822" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" /></svg>
+            <path d="M966.93,459.43a77.83,77.83,0,0,1,71.6,77.57H882.9a77.81,77.81,0,0,1,77.82-77.81" transform="translate(-851.82 -429.03)" fill="none" stroke="#eba725" :stroke-dashoffset="strokeOffset" stroke-dasharray="822" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8" class="shadow"/></svg>
     </div>
 </div>
 </template>
@@ -33,11 +33,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.shadow{
+      -webkit-filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+}
 .widget {
     width: 253px;
     display: inline-block;
     left: 50px;
-    top: 750px;
+    top: 720px;;
     position: absolute;
     padding: 1em 0;
 

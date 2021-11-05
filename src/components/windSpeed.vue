@@ -77,6 +77,9 @@ export default {
 <style lang="scss" scoped>
 .compass {
     transform-origin: center;
+
+    -webkit-filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
     //transform: rotate(20deg);
 }
 
@@ -89,7 +92,8 @@ export default {
     width: 253px;
     display: inline-block;
     left: 335px;
-    top: 750px;
+    top: 720px;
+    ;
     position: absolute;
     padding: 1em 0;
 

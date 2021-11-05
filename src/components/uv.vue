@@ -1,14 +1,23 @@
 <template>
-<div class="widget">
-    <div class="widget__uv" v-if="data">
-
-        <p style="display: inline-block; vertical-align: middle; margin-right: 1em;">UV index</p>
+<div class="widget bottomBars">
+    <div class="col-1">
+        <p>UV index</p>
+    </div>
+    <div class="col-2">
         <div class="widget__box big" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
+    </div>
+    <div class="col-3">
         <div v-for="(box, i) in boxes" :key="i" :class="activeUv(box.values) ? 'active' : null" class="widget__box" :style="'color:' + box.color">
             {{ box.values[0] }} <span v-if="i != boxes.length - 1">-</span><span v-else>+</span>
             {{ i != boxes.length - 1 ? box.values[box.values.length - 1] : null }}
         </div>
     </div>
+    <!-- <div class="widget__uv" v-if="data">
+
+     
+        <div class="widget__box big" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
+       
+    </div> -->
 </div>
 </template>
 
@@ -82,13 +91,14 @@ export default {
 
 <style lang="scss" scoped>
 .widget {
-    width: 100%;
-    display: inline-block;
-    left: 0;
     position: absolute;
-    padding: 2em 0;
+    padding: 2em 0 4em 0;
     box-sizing: border-box;
     top: 1100px;
+    border-bottom: 2px #fff solid;
+    p {
+        text-align: left;
+    }
 
     &__box.big {
         font-size: 48px;
@@ -109,7 +119,7 @@ export default {
         vertical-align: middle;
         display: inline-block;
         line-height: 48px;
-        min-width: 81px;
+        min-width: 73px;
         background-color: #3f4a55;
         font-size: 22px;
         margin-right: 10px;

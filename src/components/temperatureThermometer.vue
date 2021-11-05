@@ -2,7 +2,7 @@
 <div class="widget">
     <div class="widget__temp">
         <div class="widget__temp__lines">
-            <span v-for="index in 9" :key="index">-</span>
+            <span v-for="index in 9" :key="index"></span>
         </div>
         <span v-if="data" class="widget__temp__therm"><span class="widget__temp__therm__bottom"></span>
             <div class="widget__temp__therm__result" :style="'height:'+percentage+'px'"></div>
@@ -36,7 +36,7 @@ export default {
 
 .widget {
     top: 0;
-    width: 159px;
+    width: 132px;
     display: inline-block;
     right: 50px;
     position: absolute;
@@ -46,7 +46,7 @@ export default {
 
     &__temp {
         margin: 1em 0;
-        height: 655px;
+        height: 634px;
         background-color: #3f4a55;
         border-radius: 100px;
         box-sizing: border-box;
@@ -76,10 +76,11 @@ export default {
             border-radius: 40px;
             background-color: #303e49;
             height: 78%;
-            width: 70px;
+            width: 45px;
             display: block;
 
             &__result {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
                 width: 20px;
                 border-radius: 20px;
                 //  height: calc(32.5% - 80px);
@@ -99,6 +100,7 @@ export default {
                 position: absolute;
                 bottom: 0;
                 left: 50%;
+                z-index: 2;
                 transform: translateX(-50%);
                 border: 13px #e9b235 solid;
 

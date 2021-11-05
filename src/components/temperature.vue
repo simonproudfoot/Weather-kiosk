@@ -3,7 +3,7 @@
     <p>Temperature</p>
     <hr>
     <div class="widget__temp">
-        <h1 v-if="data">{{data.T}}<span class="c">&#8451;</span></h1>
+        <h1 style="font-size: 113px; margin-bottom: 10px;" v-if="data">{{data.T}}<span class="c">&#8451;</span></h1>
         <p style="padding: 1.5em 0">Feels like</p>
         <h1 v-if="data" class="light-text" style="font-size:4.5em">{{data.F}}<span class="c">&#8451;</span></h1>
     </div>
@@ -26,9 +26,9 @@ export default {
 .widget {
     width: 217px;
     display: inline-block;
-    left: 486px;
+    left: 478px;
     position: absolute;
-    padding: 2em 0;
+padding: 33px 0px;
     box-sizing: border-box;
 
     &__temp {
