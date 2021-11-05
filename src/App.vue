@@ -4,7 +4,7 @@
     <div class="board">
         <div v-if="weatherDataReady && observationsReady" class="board__inner">
             <div class="date">
-                <h1>{{day}}</h1>
+                <h1 class="bold">{{day}}</h1>
                 <h2>{{month}}</h2>
             </div>
             <significantWeather v-if="significantWeather" :data="significantWeather" />
@@ -258,16 +258,35 @@ export default {
 $darkgrey: '#303e49';
 $lightgrey: '#3f4a55';
 
+@font-face {
+    font-family: "Gilroy-Bold";
+    src: local("Gilroy-Bold.woff"), url('./fonts/Gilroy-Bold.woff') format("woff");
+}
+
+@font-face {
+    font-family: "Gilroy-Regular";
+    src: local("Gilroy-Regular.woff"), url('./fonts/Gilroy-Regular.woff') format("woff");
+}
+
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     background-color: #000;
     line-height: 75px;
+    font-family: "Gilroy-Regular";
+}
+
+.bold {
+    font-family: "Gilroy-Bold";
+}
+
+.thin {
+    font-family: "Gilroy-Regular";
 }
 
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -337,18 +356,17 @@ h4 {
 .bottomBars {
 
     height: 100px;
-    width: 833px;
+    width: 869px;
     display: flex !important;
-    left: 50px !important;
+    left: 40px !important;
     // justify-content: space-between;
     align-items: center;
 
-    div {
-     //   border: 1px dashed pink;
-    }
+
 
     .col-1 {
-        width: 107px;
+        
+        width: 98px;
     }
 
     .col-2 {
@@ -356,7 +374,7 @@ h4 {
     }
 
     .col-3 {
-        width: 439px
+        width: 503px
     }
 
 }

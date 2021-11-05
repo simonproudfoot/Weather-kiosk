@@ -1,13 +1,13 @@
 <template>
 <div class="widget">
-    <p>Wind</p>
+     <p style="line-height: 29px;">Wind</p>
     <hr>
     <div class="widget__temp">
-        <h1 v-if="data" style="font-weight: 900; display: inline-block; margin-right: 20px">{{data.S}}</h1>
+        <h1 v-if="data" style="font-weight: 900; display: inline-block; margin-right: 20px" class="bold">{{data.S}}</h1>
         <h2 class="light-text" style="font-weight: 100; display: inline-block"> mph</h2>
         <hr style="opacity: 10%">
         <div style="margin-top: 20px;">
-            <h1 style="font-size: 40px; display: inline-block; vertical-align: middle;">{{data.D}}</h1>
+            <h1 class="bold" style="font-size: 57px; display: inline-block; vertical-align: middle">{{data.D}}</h1>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.45 90.45" style="width: 100px; margin-left: 40px; vertical-align: middle;">
                 <g id="Layer_2" data-name="Layer 2">
                     <g id="Layer_1-2" data-name="Layer 1">
@@ -27,7 +27,6 @@
     </div>
 </div>
 </template>
-
 <script>
 export default {
     props: ['data'],
@@ -41,70 +40,53 @@ export default {
         rotation() {
             var x = 0
             if (this.data.D) {
-
                 this.direction.forEach((direction) => {
-
                     if (direction.name == this.data.D) {
                         x = direction.angle
-
                     }
                 });
-
-                // Object.values(this.direction).filter(x => x.name == this.data.D).angle
-
+            
                 return { transform: 'rotate(' + x + 'deg)' }
             } else {
-
                 return 0
             }
         },
-
     },
     mounted() {
-
         var angle = -22.5
         var names = ['N', 'NNE', 'NY', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'NWN', 'NW', 'NNW'] // 16
-
         names.forEach((directon, i) => {
             this.direction.push({ angle: angle += 22.5, name: names[i] })
         })
         console.log(this.direction)
-
     }
 }
 </script>
-
 <style lang="scss" scoped>
 .compass {
     transform-origin: center;
-
     -webkit-filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
     //transform: rotate(20deg);
 }
-
 .c {
     font-size: 20px;
     vertical-align: text-top;
 }
-
 .widget {
     width: 253px;
     display: inline-block;
-    left: 335px;
+  left: 346px;
     top: 720px;
     ;
     position: absolute;
     padding: 1em 0;
-
     &__temp {
         margin: 1em 0;
         height: 400px;
-
         border-radius: 30px;
         padding-top: 23px;
         box-sizing: border-box;
-
     }
 }
 </style>

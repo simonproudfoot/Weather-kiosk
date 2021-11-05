@@ -4,7 +4,7 @@
         <p>UV index</p>
     </div>
     <div class="col-2">
-        <div class="widget__box big" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
+        <div class="widget__box big" style="margin: 0" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
     </div>
     <div class="col-3">
         <div v-for="(box, i) in boxes" :key="i" :class="activeUv(box.values) ? 'active' : null" class="widget__box" :style="'color:' + box.color">
@@ -13,10 +13,7 @@
         </div>
     </div>
     <!-- <div class="widget__uv" v-if="data">
-
-     
         <div class="widget__box big" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
-       
     </div> -->
 </div>
 </template>
@@ -99,7 +96,6 @@ export default {
     p {
         text-align: left;
     }
-
     &__box.big {
         font-size: 48px;
         height: 78.62px;
@@ -113,8 +109,13 @@ export default {
         border: 6px #eba725 solid;
     }
 
+    &__box:last-of-type {
+        margin-right: 0;
+    }
+     &__box:first-of-type {
+        margin-left: 0;
+    }
     &__box {
-
         border-radius: 50px;
         vertical-align: middle;
         display: inline-block;
@@ -122,7 +123,7 @@ export default {
         min-width: 73px;
         background-color: #3f4a55;
         font-size: 22px;
-        margin-right: 10px;
+        margin: 0 9px;
     }
 }
 

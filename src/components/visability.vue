@@ -6,17 +6,15 @@
     </div>
     <div class="col-2">
         <div class="widget__box big">
-            <h2>{{ summary }} </h2>
-            <p>{{distance}}</p>
+            <div class="widget__box big">{{ summary }}</div>
         </div>
     </div>
-    <div class="col-3">
-        <div class="graph">
-            <img :src="require('@/assets/vis.svg')">
-            <span class="graph__bar" :style="'width:'+percent+'%'"></span>
+    <div class="col-3" style="padding-left: 15px;">
+        <div v-for="(box, i) in boxes" :key="i" :class="distance == box ? 'active' : null" class="widget__box">
+            {{box}}
         </div>
+        <div class="widget__box" style="background: transparent; margin: 0; min-width: 42px;">km</div>
     </div>
-
 </div>
 </template>
 
@@ -29,16 +27,16 @@ export default {
             summary: '',
             percent: 0,
             distance: 0,
-            boxes: ['0-1', '1-4',
+            boxes: [
+                '0-1',
+                '1-4',
                 '4-10',
-                '10-12',
                 '10-20',
                 '20-40',
                 '40+',
             ],
         };
     },
-
 
     mounted() {
         var result = this.data.V
@@ -94,12 +92,12 @@ export default {
 
 <style lang="scss" scoped>
 .graph {
-width: 428px;
-display: inline-block;
-vertical-align: middle;
-position: relative;
-height: 57px;
-margin-left: 34px;
+    width: 428px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: 57px;
+    margin-left: 34px;
 
     img {
         position: absolute;
@@ -115,7 +113,7 @@ margin-left: 34px;
         background-color: #eba725;
         top: 20px;
         left: 0;
-                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         border-radius: 10px;
 
     }
@@ -140,20 +138,12 @@ margin-left: 34px;
     }
 
     &__box.big {
-        line-height: 33.62px;
+        font-size: 48px;
+        height: 78.62px;
+        line-height: 78.62px;
         width: 266.0248px;
         border-radius: 50px;
         vertical-align: middle;
-        text-align: center;
-        padding: 19px 0 0 0;
-
-        h2 {
-            font-size: 48px;
-        }
-
-        p {
-            text-align: center;
-        }
     }
 
     &__box.active {
@@ -161,14 +151,14 @@ margin-left: 34px;
     }
 
     &__box {
-        border-radius: 24px;
+        border-radius: 27px;
         vertical-align: middle;
         display: inline-block;
         line-height: 48px;
-        min-width: 51px;
+        min-width: 62px;
         background-color: #3f4a55;
-        font-size: 17px;
-        margin-right: 6px;
+
+        margin-right: 4px;
     }
 }
 

@@ -1,9 +1,9 @@
 <template>
 <div class="widget">
-    <p>Chance of precipitation</p>
+     <p style="line-height: 29px;">Chance of precipitation</p>
     <hr>
     <div class="widget__precipitation">
-        <h2 style="font-size: 57px" v-if="data != undefined">{{data.Pp}}<span>%</span></h2>
+        <h2  style="font-size: 57px; letter-spacing: 3px;" class="bold" v-if="data != undefined">{{data.Pp}}<span class="thin">%</span></h2>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215.63 221.85">
             <path d="M948.21,650.88a49.06,49.06,0,0,1-49-49V591.26a33.35,33.35,0,0,1,1.89-11.09,10,10,0,0,0-9.43-13.32h-9.84a30,30,0,0,1-30-30,107.82,107.82,0,1,1,215.63,0,30,30,0,0,1-30,30h-30.23a10,10,0,0,0-10,10v25A49.06,49.06,0,0,1,948.21,650.88Z" transform="translate(-851.82 -429.03)" fill="#fff" opacity="0.1" />
             <line x1="177.65" y1="107.82" x2="30" y2="107.82" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="7" stroke-dasharray="0 15" />
@@ -41,7 +41,7 @@ export default {
 .widget {
     width: 253px;
     display: inline-block;
-    left: 50px;
+    left: 40px;
     top: 720px;;
     position: absolute;
     padding: 1em 0;
@@ -51,7 +51,7 @@ export default {
         font-weight: 900;
         top: 0;
         left: 50%;
-        transform: translate(-47%, 139px);
+        transform: translate(-47%, 130px);
 
         span {
             font-size: 0.5em;

@@ -1,6 +1,6 @@
 <template>
 <div class="widget">
-    <p>Current condition</p>
+    <p style="line-height: 29px;">Current condition</p>
     <hr>
     <div class="widget__significant">
         <img v-if="data[0].image" :src="require('@/assets/icons/'+data[0].image+'.svg')">
