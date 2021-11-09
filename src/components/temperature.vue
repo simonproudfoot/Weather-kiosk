@@ -1,6 +1,6 @@
 <template>
 <div class="widget">
-     <p style="line-height: 29px;">Temperature</p>
+     <p class="sectionLabel" style="line-height: 29px;">Temperature</p>
     <hr>
     <div class="widget__temp">
         <h1 style="font-size: 113px; line-height: 86px;" v-if="data">{{data.T}}<span class="c">&#8451;</span></h1>
@@ -35,7 +35,7 @@ export default {
     padding: 33px 0px;
     box-sizing: border-box;
     &__temp {
-        margin: 1em 0;
+      margin: 22px 0;
         height: 383px;
         background-color: #3f4a55;
         border-radius: 30px;

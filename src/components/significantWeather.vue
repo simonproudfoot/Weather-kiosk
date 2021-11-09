@@ -1,6 +1,6 @@
 <template>
 <div class="widget">
-    <p style="line-height: 29px;">Current condition</p>
+    <p class="sectionLabel" style="line-height: 29px;">Current condition</p>
     <hr>
     <div class="widget__significant">
         <img v-if="data[0].image" :src="require('@/assets/icons/'+data[0].image+'.svg')">
@@ -25,7 +25,7 @@ export default {
     padding: 2em 0;
 
     &__significant {
-        margin: 1em 0;
+     margin: 22px 0;
         height: 400px;
       //  background-color: #3f4a55;
         border-radius: 30px;

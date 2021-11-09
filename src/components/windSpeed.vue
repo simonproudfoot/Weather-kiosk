@@ -1,14 +1,14 @@
 <template>
 <div class="widget">
-     <p style="line-height: 29px;">Wind</p>
+     <p class="sectionLabel"style="line-height: 29px;">Wind</p>
     <hr>
     <div class="widget__temp">
-        <h1 v-if="data" style="font-weight: 900; display: inline-block; margin-right: 20px" class="bold">{{data.S}}</h1>
-        <h2 class="light-text" style="font-weight: 100; display: inline-block"> mph</h2>
+        <h1 v-if="data" style="font-weight: 900; display: inline-block; margin-right: 20px; font-size: 57px;" class="bold">{{data.S}}</h1>
+        <h2 class="light-text" style="font-weight: 100; display: inline-block; font-size: 46px"> mph</h2>
         <hr style="opacity: 10%">
         <div style="margin-top: 20px;">
-            <h1 class="bold" style="font-size: 57px; display: inline-block; vertical-align: middle">{{data.D}}</h1>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.45 90.45" style="width: 100px; margin-left: 40px; vertical-align: middle;">
+            <h1 class="bold" style="font-size: 57px; display: inline-block; vertical-align: middle; font-size: 57px;">{{data.D}}</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.45 90.45" style="width: 100px; margin-left: 14px; vertical-align: middle;">
                 <g id="Layer_2" data-name="Layer 2">
                     <g id="Layer_1-2" data-name="Layer 1">
                         <path d="M75.15,43.14H88.3a2.13,2.13,0,0,0,2.14-2.32A44.91,44.91,0,0,0,80.31,16.37a2.14,2.14,0,0,0-3.15-.14l-9.31,9.31a2.16,2.16,0,0,0-.18,2.81A27.62,27.62,0,0,1,73,41.29,2.14,2.14,0,0,0,75.15,43.14Z" fill="#fff" opacity="0.1" />

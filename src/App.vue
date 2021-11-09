@@ -268,13 +268,18 @@ $lightgrey: '#3f4a55';
     src: local("Gilroy-Regular.woff"), url('./fonts/Gilroy-Regular.woff') format("woff");
 }
 
+@font-face {
+    font-family: "Gilroy-Medium";
+    src: local("Gilroy-Medium.woff"), url('./fonts/Gilroy-Medium.woff') format("woff");
+}
+
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     background-color: #000;
     line-height: 75px;
-    font-family: "Gilroy-Regular";
+    font-family: "Gilroy-Medium";
 }
 
 .bold {
@@ -308,6 +313,7 @@ body {
 p {
     font-size: 21px;
     margin: 0;
+    letter-spacing: 0.5px;
     line-height: 40px;
 }
 
@@ -319,15 +325,16 @@ hr {
 }
 
 h1 {
-    padding: 0;
+    padding: 0;font-size: 72px;
     margin: 0;
-    font-size: 5em;
+    letter-spacing: 2px;
+    
 }
 
 h2 {
     padding: 0;
     margin: 0;
-    font-size: 3em;
+    font-size: 48px;
     font-weight: 100;
 }
 
@@ -362,10 +369,8 @@ h4 {
     // justify-content: space-between;
     align-items: center;
 
-
-
     .col-1 {
-        
+
         width: 98px;
     }
 
@@ -386,7 +391,7 @@ h4 {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    height: 1636px;
+    height: 1596px;
     z-index: 0;
 
     &__shadow {
@@ -444,5 +449,9 @@ h4 {
 
     }
 
+}
+
+.sectionLabel{
+    margin-bottom: 11px;
 }
 </style>

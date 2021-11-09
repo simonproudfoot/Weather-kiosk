@@ -85,7 +85,6 @@ export default {
     },
 };
 </script>
-
 <style lang="scss" scoped>
 .widget {
     position: absolute;
@@ -97,7 +96,7 @@ export default {
         text-align: left;
     }
     &__box.big {
-        font-size: 48px;
+        font-size: 40px;
         height: 78.62px;
         line-height: 78.62px;
         width: 266.0248px;

@@ -82,27 +82,27 @@ export default {
             &__result {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
                 width: 20px;
-                border-radius: 20px;
+                border-radius: 20px 20px 0 0;
                 //  height: calc(32.5% - 80px);
                 display: block;
                 position: absolute;
-                bottom: 56px;
+                bottom: 53px;
                 left: 50%;
                 transform: translateX(-50%);
                 background-color: #e9b235;
             }
 
             &__bottom {
-                width: 40px;
+                width: 34px;
                 border-radius: 100%;
-                height: 40px;
+                height: 34px;
                 display: block;
                 position: absolute;
                 bottom: 0;
                 left: 50%;
                 z-index: 2;
                 transform: translateX(-50%);
-                border: 13px #e9b235 solid;
+                border: 11px #e9b235 solid;
 
             }
         }

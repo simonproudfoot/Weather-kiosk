@@ -138,7 +138,7 @@ export default {
     }
 
     &__box.big {
-        font-size: 48px;
+    font-size: 40px;
         height: 78.62px;
         line-height: 78.62px;
         width: 266.0248px;
@@ -157,8 +157,8 @@ export default {
         line-height: 48px;
         min-width: 62px;
         background-color: #3f4a55;
-
         margin-right: 4px;
+        font-size: 17px;
     }
 }
 
