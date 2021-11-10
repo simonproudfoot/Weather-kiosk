@@ -138,7 +138,7 @@ export default {
     }
 
     &__box.big {
-    font-size: 40px;
+        font-size: 40px;
         height: 78.62px;
         line-height: 78.62px;
         width: 266.0248px;
@@ -147,16 +147,16 @@ export default {
     }
 
     &__box.active {
-        border: 6px #eba725 solid;
+        border: 8px #eba725 solid;
     }
 
     &__box {
-        border-radius: 27px;
+        border-radius: 35px;
         vertical-align: middle;
         display: inline-block;
         line-height: 48px;
         min-width: 62px;
-        background-color: #3f4a55;
+        background-color: #44525a;
         margin-right: 4px;
         font-size: 17px;
     }

@@ -45,9 +45,9 @@ export default {
     left: 727px;
 
     &__temp {
-        margin: 1em 0;
+        margin: 1em auto;
         height: 634px;
-        background-color: #3f4a55;
+        background-color: #44525a;
         border-radius: 100px;
         box-sizing: border-box;
 
@@ -59,12 +59,12 @@ export default {
             transform: translateX(-50%);
 
             span {
-                //   position: absolute;
-                width: 100%;
+                width: 90px;
                 background-color: #303e49;
                 display: block;
                 height: 8px;
-                margin: 56px 0;
+                margin: 56px auto;
+                border-radius: 20px;
             }
         }
 
@@ -76,17 +76,16 @@ export default {
             border-radius: 40px;
             background-color: #303e49;
             height: 78%;
-            width: 45px;
+            width: 49px;
             display: block;
 
             &__result {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-                width: 20px;
+                width: 17px;
                 border-radius: 20px 20px 0 0;
-                //  height: calc(32.5% - 80px);
                 display: block;
                 position: absolute;
-                bottom: 53px;
+                bottom: 50px;
                 left: 50%;
                 transform: translateX(-50%);
                 background-color: #e9b235;
@@ -102,7 +101,7 @@ export default {
                 left: 50%;
                 z-index: 2;
                 transform: translateX(-50%);
-                border: 11px #e9b235 solid;
+                border: 8.5px #e9b235 solid;
 
             }
         }

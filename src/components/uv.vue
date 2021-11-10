@@ -85,6 +85,7 @@ export default {
     },
 };
 </script>
+
 <style lang="scss" scoped>
 .widget {
     position: absolute;
@@ -92,9 +93,11 @@ export default {
     box-sizing: border-box;
     top: 1100px;
     border-bottom: 2px #fff solid;
+
     p {
         text-align: left;
     }
+
     &__box.big {
         font-size: 40px;
         height: 78.62px;
@@ -105,22 +108,24 @@ export default {
     }
 
     &__box.active {
-        border: 6px #eba725 solid;
+        border: 8px #eba725 solid;
     }
 
     &__box:last-of-type {
         margin-right: 0;
     }
-     &__box:first-of-type {
+
+    &__box:first-of-type {
         margin-left: 0;
     }
+
     &__box {
         border-radius: 50px;
         vertical-align: middle;
         display: inline-block;
         line-height: 48px;
         min-width: 73px;
-        background-color: #3f4a55;
+        background-color: #44525a;
         font-size: 22px;
         margin: 0 9px;
     }

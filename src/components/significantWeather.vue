@@ -27,7 +27,7 @@ export default {
     &__significant {
      margin: 22px 0;
         height: 400px;
-      //  background-color: #3f4a55;
+      //  background-color: #44525a;
         border-radius: 30px;
 
     }

@@ -1,7 +1,10 @@
 <template>
 <div id="app" :style="'background-color:#'+significantWeather[0].color">
-    <span class="gradient"></span>
+
+    <video muted loop autoplay :src="require('@/assets/backgrounds/sunny.mp4')" class="gradient"></video>
+
     <div class="board">
+        <!-- <h1>here{{backgroundVideo}}</h1> -->
         <div v-if="weatherDataReady && observationsReady" class="board__inner">
             <div class="date">
                 <h1 class="bold">{{day}}</h1>
@@ -20,7 +23,7 @@
             <h1>Loading</h1>
         </div>
     </div>
-    <span class="stand"><span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span>
+    <!-- <span class="stand"><span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span> -->
 </div>
 </template>
 
@@ -113,9 +116,7 @@ export default {
         month() {
             const event = new Date();
             return event.getDate() + ' ' + event.toLocaleDateString(undefined, { month: 'long' })
-
         },
-
         day() {
             var d = new Date();
             var weekday = new Array(7);
@@ -126,7 +127,6 @@ export default {
             weekday[4] = "Thursday";
             weekday[5] = "Friday";
             weekday[6] = "Saturday";
-
             return weekday[d.getDay()];
         },
         weatherWarning() {
@@ -144,6 +144,96 @@ export default {
             } else {
                 return []
             }
+        },
+
+        backgroundVideo() {
+            const windspeed = this.dateInfo[0].S
+            const currentTemp = this.dateInfo[0].T
+            const condition = this.significantWeather[0].image
+            let video = ''
+
+            // SUN 
+            if (currentTemp < 5 && condition == 'sunny') {
+                video = 'cold_bright'
+            } else if (condition == 'sunny' && currentTemp >= 5 && currentTemp < 24) {
+                video = 'generic_bright'
+            } else if (condition == 'sunny' && currentTemp >= 5 && currentTemp < 24 && windspeed > 13) {
+                video = 'wind_bright'
+            } else if (condition == 'sunny' >= 25) {
+                video = 'hot_bright'
+            }
+
+            // PARTLY CLOUDY
+            else if (currentTemp < 5 && condition == 'partly_cloudy') {
+                video = 'cold_bright'
+            } else if (condition == 'partly_cloudy' && currentTemp >= 5 && currentTemp < 24) {
+                video = 'generic_bright'
+            } else if (condition == 'partly_cloudy' && currentTemp >= 5 && currentTemp < 24 && windspeed > 13) {
+                video = 'wind_bright'
+            } else if (condition == 'partly_cloudy' >= 25) {
+                video = 'hot_bright'
+            }
+
+            // MIST
+            else if (currentTemp < 5 && condition == 'mist') {
+                video = 'cold_medium'
+            } else if (condition == 'mist' && currentTemp >= 5 && currentTemp < 24) {
+                video = 'generic_medium'
+            } else if (condition == 'mist' && currentTemp >= 5 && currentTemp < 24 && windspeed > 13) {
+                video = 'wind_medium'
+            }
+
+            // FOG
+            else if (currentTemp < 5 && condition == 'fog') {
+                video = 'cold_dark'
+            } else if (condition == 'fog' && currentTemp >= 5 && currentTemp < 24) {
+                video = 'generic_dark'
+            } else if (condition == 'fog' && currentTemp >= 5 && currentTemp < 24 && windspeed > 13) {
+                video = 'wind_dark'
+            }
+
+            // CLOUDY
+            else if (currentTemp < 5 && condition == 'cloudy') {
+                video = 'cold_medium'
+            } else if (condition == 'cloudy' && currentTemp >= 5 && currentTemp < 24) {
+                video = 'generic_medium'
+            } else if (condition == 'cloudy' && currentTemp >= 5 && currentTemp < 24 && windspeed > 13) {
+                video = 'wind_medium'
+            } else if (condition == 'cloudy' >= 25) {
+                video = 'hot_medium'
+            }
+
+            // OVERCAST
+            else if (currentTemp < 5 && condition == 'overcast') {
+                video = 'cold_medium'
+            } else if (condition == 'overcast' && currentTemp >= 5 && currentTemp < 24) {
+                video = 'generic_medium'
+            } else if (condition == 'overcast' && currentTemp >= 5 && currentTemp < 24 && windspeed > 13) {
+                video = 'wind_medium'
+            } else if (condition == 'overcast' >= 25) {
+                video = 'hot_medium'
+            }
+
+            // OTHERS
+            else if (condition == 'drizzle') {
+                video = 'drizzle_medium'
+            } else if (condition == 'light_rain') {
+                video = 'light_rain_medium'
+            } else if (condition == 'heavy_rain') {
+                video = 'heavy_rain_dark'
+            } else if (condition == 'sleet') {
+                video = 'sleet_dark'
+            } else if (condition == 'hail') {
+                video = 'hail_dark'
+            } else if (condition == 'light_snow') {
+                video = 'light_snow_medium'
+            } else if (condition == 'heavy_snow') {
+                video = 'heavy_snow_dark'
+            } else if (condition == 'thunder') {
+                video = 'heavy_rain_dark'
+            }
+
+            return video + '.mp4'
         },
 
         significantWeather() {
@@ -256,21 +346,41 @@ export default {
 
 <style lang="scss">
 $darkgrey: '#303e49';
-$lightgrey: '#3f4a55';
+$lightgrey: '#44525a';
 
 @font-face {
-    font-family: "Gilroy-Bold";
-    src: local("Gilroy-Bold.woff"), url('./fonts/Gilroy-Bold.woff') format("woff");
+    font-family: 'Gilroy-Bold';
+    font-style: normal;
+    font-weight: initial;
+    src: local('Gilroy-Bold'), url('./fonts/Gilroy-Bold.woff') format('woff');
 }
 
 @font-face {
-    font-family: "Gilroy-Regular";
-    src: local("Gilroy-Regular.woff"), url('./fonts/Gilroy-Regular.woff') format("woff");
+    font-family: 'Gilroy-Heavy';
+    font-style: normal;
+    font-weight: initial;
+    src: local('Gilroy-Heavy'), url('./fonts/Gilroy-Heavy.woff') format('woff');
 }
 
 @font-face {
-    font-family: "Gilroy-Medium";
-    src: local("Gilroy-Medium.woff"), url('./fonts/Gilroy-Medium.woff') format("woff");
+    font-family: 'Gilroy-Light';
+    font-style: normal;
+    font-weight: initial;
+    src: local('Gilroy-Light'), url('./fonts/Gilroy-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Gilroy-Medium';
+    font-style: normal;
+    font-weight: initial;
+    src: local('Gilroy-Medium'), url('./fonts/Gilroy-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Gilroy-Regular';
+    font-style: normal;
+    font-weight: initial;
+    src: local('Gilroy-Regular'), url('./fonts/Gilroy-Regular.woff') format('woff');
 }
 
 body {
@@ -280,6 +390,10 @@ body {
     background-color: #000;
     line-height: 75px;
     font-family: "Gilroy-Medium";
+}
+
+body * {
+    font-weight: initial;
 }
 
 .bold {
@@ -321,14 +435,15 @@ hr {
     background-color: #eee;
     border: 0 none;
     color: #eee;
-    height: 2px;
+    height: 3px;
 }
 
 h1 {
-    padding: 0;font-size: 72px;
+    padding: 0;
+    font-size: 72px;
     margin: 0;
     letter-spacing: 2px;
-    
+
 }
 
 h2 {
@@ -423,23 +538,24 @@ h4 {
     transform: translateX(-50%);
     position: absolute;
     width: 991px;
-    bottom: 150px;
+    bottom: 126px;
     display: block;
+
     height: 1400px;
-    background-color: #fff;
+    //  background-color: #fff;
     border-radius: 60px;
     box-sizing: border-box;
     padding: 25px;
 
     &__inner {
-        -webkit-box-shadow: inset 10px 10px 1px 5px #28333b;
-        box-shadow: inset 10px 10px 1px 5px #28333b;
+        // -webkit-box-shadow: inset 10px 10px 1px 5px #28333b;
+        // box-shadow: inset 10px 10px 1px 5px #28333b;
         color: #fff;
         object-fit: contain;
         padding: 20px;
         border-radius: 40px;
         padding: 50px;
-        background-color: #303e49;
+        //  background-color: #303e49;
         height: 1250px;
         position: relative;
 
@@ -451,7 +567,7 @@ h4 {
 
 }
 
-.sectionLabel{
+.sectionLabel {
     margin-bottom: 11px;
 }
 </style>
