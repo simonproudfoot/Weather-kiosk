@@ -1,16 +1,13 @@
 <template>
 <div id="app" :style="'background-color:#'+significantWeather[0].color">
-
-    <video muted loop autoplay :src="require('@/assets/backgrounds/sunny.mp4')" class="gradient"></video>
-
+    <video muted loop autoplay :src="require('@/assets/backgrounds/back_'+backgroundVideo)" class="gradient"></video>
     <div class="board">
-        <!-- <h1>here{{backgroundVideo}}</h1> -->
         <div v-if="weatherDataReady && observationsReady" class="board__inner">
             <div class="date">
                 <h1 class="bold">{{day}}</h1>
                 <h2>{{month}}</h2>
             </div>
-            <significantWeather v-if="significantWeather" :data="significantWeather" />
+            <significantWeather v-if="significantWeather[0]!==undefined" :data="significantWeather" />
             <temperature v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <temperatureThermometer v-if="dateInfo!==undefined" :data="dateInfo[0]" />
             <precipitationProbability v-if="dateInfo!==undefined" :data="dateInfo[0]" />
@@ -23,7 +20,7 @@
             <h1>Loading</h1>
         </div>
     </div>
-    <!-- <span class="stand"><span class="stand__shadow"></span> <span class="stand__shadowTop"></span></span> -->
+    <!-- <span class="stand"><span class="stand__shadow"></span><span class="stand__shadowTop"></span></span> -->
 </div>
 </template>
 
@@ -346,7 +343,7 @@ export default {
 
 <style lang="scss">
 $darkgrey: '#303e49';
-$lightgrey: '#44525a';
+$lightgrey: '#5b6872';
 
 @font-face {
     font-family: 'Gilroy-Bold';
@@ -468,7 +465,7 @@ h4 {
 }
 
 .light-text {
-    color: #686c76;
+    color: #839098;
 }
 
 .date {

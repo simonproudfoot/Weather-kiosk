@@ -59,8 +59,8 @@ export default {
     &__temp {
         margin: 22px 0;
         height: 383px;
-        background-color: #44525a;
-        border-radius: 30px;
+        background-color: #5b6872;
+        border-radius: 50px;
         //  padding: 79px 0;
         padding-top: 79px;
         box-sizing: border-box;

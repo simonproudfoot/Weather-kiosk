@@ -47,7 +47,7 @@ export default {
     &__temp {
         margin: 1em auto;
         height: 634px;
-        background-color: #44525a;
+        background-color: #5b6872;
         border-radius: 100px;
         box-sizing: border-box;
 
@@ -60,7 +60,7 @@ export default {
 
             span {
                 width: 90px;
-                background-color: #303e49;
+                background-color: #354651;
                 display: block;
                 height: 8px;
                 margin: 56px auto;
@@ -74,7 +74,7 @@ export default {
             top: 50%;
             transform: translate(-50%, -50%);
             border-radius: 40px;
-            background-color: #303e49;
+            background-color: #354651;
             height: 78%;
             width: 49px;
             display: block;
@@ -85,7 +85,7 @@ export default {
                 border-radius: 20px 20px 0 0;
                 display: block;
                 position: absolute;
-                bottom: 50px;
+                bottom: 48px;
                 left: 50%;
                 transform: translateX(-50%);
                 background-color: #e9b235;
@@ -102,7 +102,6 @@ export default {
                 z-index: 2;
                 transform: translateX(-50%);
                 border: 8.5px #e9b235 solid;
-
             }
         }
     }

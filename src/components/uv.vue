@@ -4,7 +4,9 @@
         <p>UV index</p>
     </div>
     <div class="col-2">
-        <div class="widget__box big" style="margin: 0" :style="uvData >= 11 ?'font-size: 30px' : null">{{ summary }}</div>
+        <div class="widget__box big" style="margin: 0" :style="uvData >= 11 ? 'font-size: 30px' : null">
+            {{ summary }}
+        </div>
     </div>
     <div class="col-3">
         <div v-for="(box, i) in boxes" :key="i" :class="activeUv(box.values) ? 'active' : null" class="widget__box" :style="'color:' + box.color">
@@ -54,12 +56,12 @@ export default {
         },
     },
     mounted() {
-        this.uvData = parseInt(this.data.U);
+        val = this.data.U;
+        val == 0 ? (this.uvData = 1) : (this.data = val);
     },
     computed: {
         summary() {
             var result = "";
-            //  if (this.uvData) {
 
             if (this.uvData == 0) {
                 result = "Low";
@@ -80,7 +82,6 @@ export default {
                 result = "Exremeley high";
             }
             return result;
-
         },
     },
 };
@@ -125,7 +126,7 @@ export default {
         display: inline-block;
         line-height: 48px;
         min-width: 73px;
-        background-color: #44525a;
+        background-color: #5b6872;
         font-size: 22px;
         margin: 0 9px;
     }

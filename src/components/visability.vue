@@ -1,6 +1,5 @@
 <template>
 <div class="widget bottomBars">
-
     <div class="col-1">
         <p>Visibility</p>
     </div>
@@ -37,53 +36,47 @@ export default {
             ],
         };
     },
-
     mounted() {
         var result = this.data.V
         if (result == 'UN') {
             this.summary = 'Unknown'
-            this.distance = ''
+            this.distance = '0-1'
             this.percent = 0
         }
         if (result == 'VP') {
             this.summary = 'Very poor'
             this.distance = '0-1k'
             this.percent = 5
-            this.distance = ''
+            this.distance = '0-1'
         }
         if (result == 'PO') {
             this.summary = 'Poor'
             this.distance = '1-4'
             this.percent = 10
-            this.distance = ''
+            this.distance = '0-1'
         }
         if (result == 'MO') {
             this.summary = 'Moderate'
             this.distance = '4-10'
             this.percent = 24
-
         }
         if (result == 'GO') {
             this.summary = 'Good'
             this.distance = '10-20'
             this.percent = 37
-
         }
         if (result == 'VG') {
             this.summary = 'Very good'
             this.distance = '20-40'
             this.percent = 69
-
         }
         if (result == 'EX') {
             this.summary = 'Excellent'
             this.distance = '40+'
             this.percent = 100
-
         }
         // Visibility in metres or as a code:
         // UN Unknown
-
         // VG Very good - Between 20-40 km
         // EX Excellent - More than 40 km
     },
@@ -156,7 +149,7 @@ export default {
         display: inline-block;
         line-height: 48px;
         min-width: 62px;
-        background-color: #44525a;
+        background-color: #5b6872;
         margin-right: 4px;
         font-size: 17px;
     }

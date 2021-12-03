@@ -1,8 +1,9 @@
-//in vue.config.js file
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/weather' : '/',
-  filenameHashing: false,
-  devServer: {
-    proxy: 'http://datapoint.metoffice.gov.uk'
+  pluginOptions: {
+    electronBuilder: {
+      //preload: 'src/preload.js',
+      // Or, for multiple preload files:
+     // preload: { preload: 'src/preload.js', otherPreload: 'src/preload2.js' }
+    }
   }
 }
