@@ -215,7 +215,7 @@ export default {
             else if (condition == 'drizzle') {
                 video = 'drizzle_medium'
             } else if (condition == 'light_rain') {
-                video = 'light_rain_medium'
+                video = 'light_rain'
             } else if (condition == 'heavy_rain') {
                 video = 'heavy_rain_dark'
             } else if (condition == 'sleet') {
